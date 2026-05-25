@@ -333,7 +333,9 @@ nav{
 @media(max-width:600px){.lc-banner{padding:30px 22px}}
 
 /* partners + quality 2col */
-.aq-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.aq-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.aq-grid > div:first-child{padding-top:0}
+.aq-grid > div:last-child .col-lbl{display:block;margin-bottom:18px}
 @media(max-width:760px){.aq-grid{grid-template-columns:1fr;gap:40px}}
 .col-lbl{
   font-size:.67rem;font-weight:600;
