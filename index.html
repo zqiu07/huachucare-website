@@ -338,6 +338,15 @@ nav{
 .aq-grid > div:first-child{padding-top:0}
 .aq-grid > div:last-child .col-lbl{display:block;margin-bottom:18px}
 @media(max-width:760px){.aq-grid{grid-template-columns:1fr;gap:40px}}
+   @media(max-width:760px){
+  .brand-mvv{grid-template-columns:1fr !important}
+  .brand-intro{grid-template-columns:1fr !important}
+  .brand-values{grid-template-columns:1fr 1fr !important}
+  .brand-svc{grid-template-columns:1fr !important}
+}
+@media(max-width:480px){
+  .brand-values{grid-template-columns:1fr !important}
+}
 .col-lbl{
   font-size:.67rem;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;
