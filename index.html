@@ -1462,7 +1462,9 @@ function openM(id){
   document.getElementById('mTitle').textContent= lang()==='zh'?d.hZh:d.hEn;
   document.getElementById('mSub').textContent  = lang()==='zh'?d.sZh:d.sEn;
   document.getElementById('mBody').innerHTML   = lang()==='zh'?d.bZh:d.bEn;
-  document.getElementById('mOv').classList.add('open');
+  const ov=document.getElementById('mOv');
+  ov.classList.add('open');
+  ov.scrollTop=0;
   document.body.style.overflow='hidden';
 }
 function closeM(){
