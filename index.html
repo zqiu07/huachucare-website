@@ -1595,10 +1595,15 @@ function openMap(baidu,google){
   const isZh=document.documentElement.getAttribute('data-lang')==='zh';
   if(isZh){
     const isMobile=/iPhone|iPad|Android/i.test(navigator.userAgent);
-    const url=isMobile
-      ?'bdapp://map/geocoder?src=webapp.huachucare&address='+encodeURIComponent(baidu)+'&coord_type=gcj02'
-      :'https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu);
-    window.open(url,'_blank');
+    if(isMobile){
+      const appUrl='bdapp://map/geocoder?src=webapp.huachucare&address='+encodeURIComponent(baidu)+'&coord_type=gcj02';
+      const webUrl='https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu);
+      const t=setTimeout(()=>{window.location.href=webUrl},1500);
+      window.location.href=appUrl;
+      window.addEventListener('blur',()=>clearTimeout(t),{once:true});
+    } else {
+      window.open('https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu),'_blank');
+    }
   } else {
     window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(google),'_blank');
   }
