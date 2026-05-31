@@ -1589,11 +1589,11 @@ function svcTab(id,btn){
 }
 
 /* ── FAQ accordion ── */
-function openMap(q){
-  const zh=navigator.language&&navigator.language.startsWith('zh');
-  const url=zh
-    ?'https://www.amap.com/search?query='+encodeURIComponent(q)
-    :'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+function openMap(gaode,google){
+  const isZh=document.documentElement.getAttribute('data-lang')==='zh';
+  const url=isZh
+    ?'https://www.amap.com/search?query='+encodeURIComponent(gaode)
+    :'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(google);
   window.open(url,'_blank');
 }
 function toggleFaq(btn){
