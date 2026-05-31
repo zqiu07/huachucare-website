@@ -1589,10 +1589,10 @@ function svcTab(id,btn){
 }
 
 /* ── FAQ accordion ── */
-function openMap(gaode,google){
+function openMap(baidu,google){
   const isZh=document.documentElement.getAttribute('data-lang')==='zh';
   const url=isZh
-    ?'https://www.amap.com/search?query='+encodeURIComponent(gaode)
+    ?'https://map.baidu.com/search/'+encodeURIComponent(baidu)
     :'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(google);
   window.open(url,'_blank');
 }
