@@ -1567,6 +1567,13 @@ function svcTab(id,btn){
 }
 
 /* ── FAQ accordion ── */
+function openMap(q){
+  const zh=navigator.language&&navigator.language.startsWith('zh');
+  const url=zh
+    ?'https://www.amap.com/search?query='+encodeURIComponent(q)
+    :'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+  window.open(url,'_blank');
+}
 function toggleFaq(btn){
   const a=btn.nextElementSibling;
   const isOpen=btn.classList.contains('open');
