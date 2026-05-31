@@ -1593,7 +1593,7 @@ function svcTab(id,btn){
 function openMap(baidu,google){
   const isZh=document.documentElement.getAttribute('data-lang')==='zh';
   const url=isZh
-    ?'https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu)
+    ?'https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu)+'%26querytype%3Ds%26da_src%3Dgeoconv.button'
     :'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(google);
   window.open(url,'_blank');
 }
