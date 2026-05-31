@@ -1593,10 +1593,15 @@ function svcTab(id,btn){
 /* ── FAQ accordion ── */
 function openMap(baidu,google){
   const isZh=document.documentElement.getAttribute('data-lang')==='zh';
-  const url=isZh
-    ?'https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu)+'%26querytype%3Ds%26da_src%3Dgeoconv.button'
-    :'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(google);
-  window.open(url,'_blank');
+  if(isZh){
+    const isMobile=/iPhone|iPad|Android/i.test(navigator.userAgent);
+    const url=isMobile
+      ?'bdapp://map/geocoder?src=webapp.huachucare&address='+encodeURIComponent(baidu)+'&coord_type=gcj02'
+      :'https://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D'+encodeURIComponent(baidu);
+    window.open(url,'_blank');
+  } else {
+    window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(google),'_blank');
+  }
 }
 function toggleFaq(btn){
   const a=btn.nextElementSibling;
