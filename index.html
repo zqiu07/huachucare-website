@@ -699,11 +699,15 @@ nav{
     grid-template-columns:1fr !important;
     gap:44px !important;
     padding:56px 24px !important;
+    width:100% !important;
+    max-width:100% !important;
   }
 }
 @media(max-width:540px){
   .contact-wrap{
     padding:44px 18px !important;
+    width:100% !important;
+    max-width:100% !important;
   }
 }
 .contact-lead{font-size:.94rem;font-weight:300;color:var(--body);line-height:1.9;margin-bottom:36px;letter-spacing:.015em}
@@ -720,9 +724,9 @@ nav{
   display:flex;align-items:center;justify-content:center;
 }
 .i-ic svg{width:16px;height:16px;stroke:var(--mid);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.i-tx{min-width:0;word-break:break-word}
+.i-tx{min-width:0;overflow-wrap:break-word;word-break:break-word}
 .i-tx strong{display:block;font-size:.76rem;font-weight:600;color:var(--deep);margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase}
-.i-tx p,.i-tx a{font-size:.84rem;color:var(--body);line-height:1.7;letter-spacing:.01em}
+.i-tx p,.i-tx a{font-size:.84rem;color:var(--body);line-height:1.7;letter-spacing:.01em;overflow-wrap:break-word;word-break:break-word}
 [data-lang="zh"] .i-tx p{letter-spacing:.04em}
 .i-tx a:hover{color:var(--mid)}
 
@@ -1465,7 +1469,7 @@ footer{background:var(--deep);padding:52px 0 28px;width:100%;box-sizing:border-b
      PAGE 5 — CONTACT
 ════════════════════════════════════════════ -->
 <div class="view" id="v-contact">
-  <div class="contact-wrap" style="max-width:var(--max);margin:0 auto">
+  <div class="contact-wrap">
     <div>
       <span class="chip rv"><span class="en">Get In Touch</span><span class="zh">联系我们</span></span>
       <h2 class="page-title rv d1">
@@ -1478,32 +1482,23 @@ footer{background:var(--deep);padding:52px 0 28px;width:100%;box-sizing:border-b
       </p>
       <div class="info-list">
        <div class="info-row rv d3"><div class="i-ic"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div><div class="i-tx"><strong><span class="en">Offices</span><span class="zh">公司地址</span></strong>
-  <p style="margin-bottom:8px;display:flex;align-items:baseline;gap:6px">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;color:var(--mid)"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
-    <span>
-      <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司','Huachu Medical Technology Boao Lecheng Qionghai Hainan China')" style="color:var(--mid);cursor:pointer">
-        <span class="en">Huachu Medical Technology, Boao Lecheng Pilot Zone, Qionghai, Hainan &nbsp;<span style="color:var(--muted);font-size:.78rem">(HQ)</span></span>
-        <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（乐城总部）</span></span>
-      </a>
-    </span>
+  <p style="margin-bottom:8px">
+    <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司','Huachu Medical Technology Boao Lecheng Qionghai Hainan China')" style="color:var(--mid);cursor:pointer">
+      <span class="en">Huachu Medical Technology, Boao Lecheng Pilot Zone, Qionghai, Hainan <span style="color:var(--muted);font-size:.78rem">(HQ)</span></span>
+      <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（乐城总部）</span></span>
+    </a>
   </p>
-  <p style="margin-bottom:8px;display:flex;align-items:baseline;gap:6px">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;color:var(--mid)"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
-    <span>
-      <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(海口中心)','Huachu Medical Technology Huakai Jianghaiting Block A Floor 3 Meilanqu Haikou Hainan')" style="color:var(--mid);cursor:pointer">
-        <span class="en">Huachu Medical Technology, Haikou Centre, Hainan</span>
-        <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（海口中心）</span></span>
-      </a>
-    </span>
+  <p style="margin-bottom:8px">
+    <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(海口中心)','Huachu Medical Technology Huakai Jianghaiting Block A Floor 3 Meilanqu Haikou Hainan')" style="color:var(--mid);cursor:pointer">
+      <span class="en">Huachu Medical Technology, Haikou Centre, Hainan</span>
+      <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（海口中心）</span></span>
+    </a>
   </p>
-  <p style="margin-bottom:12px;display:flex;align-items:baseline;gap:6px">
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:2px;color:var(--mid)"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
-    <span>
-      <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(万宁中心)','Huachu Medical Technology Wanning Purple Shell Garden Lijizhen Wanning Hainan')" style="color:var(--mid);cursor:pointer">
-        <span class="en">Huachu Medical Technology, Wanning Centre, Hainan</span>
-        <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（万宁中心）</span></span>
-      </a>
-    </span>
+  <p style="margin-bottom:12px">
+    <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(万宁中心)','Huachu Medical Technology Wanning Purple Shell Garden Lijizhen Wanning Hainan')" style="color:var(--mid);cursor:pointer">
+      <span class="en">Huachu Medical Technology, Wanning Centre, Hainan</span>
+      <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（万宁中心）</span></span>
+    </a>
   </p>
   <p style="font-size:.78rem;color:var(--muted);line-height:1.7">
     <span class="en"></span>
