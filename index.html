@@ -694,8 +694,18 @@ nav{
   display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;
   box-sizing:border-box;width:100%;
 }
-@media(max-width:860px){.contact-wrap{grid-template-columns:1fr;gap:44px;padding:56px 24px}}
-@media(max-width:540px){.contact-wrap{padding:44px 18px}}
+@media(max-width:860px){
+  .contact-wrap{
+    grid-template-columns:1fr !important;
+    gap:44px !important;
+    padding:56px 24px !important;
+  }
+}
+@media(max-width:540px){
+  .contact-wrap{
+    padding:44px 18px !important;
+  }
+}
 .contact-lead{font-size:.94rem;font-weight:300;color:var(--body);line-height:1.9;margin-bottom:36px;letter-spacing:.015em}
 [data-lang="zh"] .contact-lead{letter-spacing:.05em;line-height:2.1}
 .info-list{display:flex;flex-direction:column}
