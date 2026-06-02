@@ -1555,6 +1555,8 @@ footer{background:var(--deep);padding:52px 0 28px;width:100%;box-sizing:border-b
 ════════════════════════════════════════════ -->
 <div class="view" id="v-contact">
   <div class="contact-wrap">
+
+    <!-- LEFT COL: info (desktop) / top block (mobile) -->
     <div>
       <span class="chip rv"><span class="en">Get In Touch</span><span class="zh">联系我们</span></span>
       <h2 class="page-title rv d1">
@@ -1566,64 +1568,116 @@ footer{background:var(--deep);padding:52px 0 28px;width:100%;box-sizing:border-b
         <span class="zh">无论您是为自己咨询，还是作为合作推介方，我们的健康管家团队随时为您提供从初步评估到治疗规划的全程专属指导。</span>
       </p>
       <div class="info-list">
-       <div class="info-row rv d3"><div class="i-ic"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div><div class="i-tx"><strong><span class="en">Offices</span><span class="zh">公司地址</span></strong>
-  <p style="margin-bottom:8px">
-    <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司','Huachu Medical Technology Boao Lecheng Qionghai Hainan China')" style="color:var(--mid);cursor:pointer">
-      <span class="en">Huachu Medical Technology, Boao Lecheng Pilot Zone, Qionghai, Hainan <span style="color:var(--muted);font-size:.78rem">(HQ)</span></span>
-      <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（乐城总部）</span></span>
-    </a>
-  </p>
-  <p style="margin-bottom:8px">
-    <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(海口中心)','Huachu Medical Technology Huakai Jianghaiting Block A Floor 3 Meilanqu Haikou Hainan')" style="color:var(--mid);cursor:pointer">
-      <span class="en">Huachu Medical Technology, Haikou Centre, Hainan</span>
-      <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（海口中心）</span></span>
-    </a>
-  </p>
-  <p style="margin-bottom:12px">
-    <a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(万宁中心)','Huachu Medical Technology Wanning Purple Shell Garden Lijizhen Wanning Hainan')" style="color:var(--mid);cursor:pointer">
-      <span class="en">Huachu Medical Technology, Wanning Centre, Hainan</span>
-      <span class="zh">海南博鳌乐城华初医疗科技服务有限公司<br><span style="color:var(--muted);font-size:.78rem">（万宁中心）</span></span>
-    </a>
-  </p>
-  <p style="font-size:.78rem;color:var(--muted);line-height:1.7">
-    <span class="en"></span>
-    <span class="zh">📍 请在百度地图或微信自带地图中搜索以上地址</span>
-  </p>
-</div></div>
-        <div class="info-row rv d4"><div class="i-ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div><div class="i-tx"><strong>Email</strong><p><a href="mailto:public@huachucare.cn" style="color:var(--mid)">public@huachucare.cn</a></p></div></div>
-        <div class="info-row rv d5"><div class="i-ic"><svg viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div><div class="i-tx"><strong>WeChat / WhatsApp</strong><p><span class="en">Please email us to receive our direct contact details.</span><span class="zh">请发送邮件至上述邮箱获取微信 / WhatsApp 联系方式。</span></p></div></div>
+        <div class="info-row rv d3">
+          <div class="i-ic"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg></div>
+          <div class="i-tx">
+            <strong><span class="en">Offices</span><span class="zh">公司地址</span></strong>
+            <!-- DESKTOP: clickable map links -->
+            <div class="desk-only">
+              <p style="margin-bottom:8px"><a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司','Huachu Medical Technology Boao Lecheng Qionghai Hainan China')" style="color:var(--mid);cursor:pointer"><span class="en">Huachu Medical Technology, Boao Lecheng Pilot Zone, Qionghai, Hainan <span style="color:var(--muted);font-size:.78rem">(HQ)</span></span><span class="zh">华初医疗科技，博鳌乐城先行区，琼海，海南 <span style="color:var(--muted);font-size:.78rem">（总部）</span></span></a></p>
+              <p style="margin-bottom:8px"><a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(海口中心)','Huachu Medical Technology Haikou Centre Hainan')" style="color:var(--mid);cursor:pointer"><span class="en">Huachu Medical Technology, Haikou Centre, Hainan</span><span class="zh">华初医疗科技，海口中心，海南</span></a></p>
+              <p><a onclick="openMap('海南博鳌乐城华初医疗科技服务有限公司(万宁中心)','Huachu Medical Technology Wanning Centre Hainan')" style="color:var(--mid);cursor:pointer"><span class="en">Huachu Medical Technology, Wanning Centre, Hainan</span><span class="zh">华初医疗科技，万宁中心，海南</span></a></p>
+            </div>
+            <!-- MOBILE: plain text, no links -->
+            <div class="mob-only" style="display:none">
+              <p class="en" style="margin-bottom:6px">Huachu Medical Technology, Boao Lecheng Pilot Zone, Qionghai, Hainan <span style="color:var(--muted);font-size:.78rem">(HQ)</span></p>
+              <p class="en" style="margin-bottom:6px">Huachu Medical Technology, Haikou Centre, Hainan</p>
+              <p class="en">Huachu Medical Technology, Wanning Centre, Hainan</p>
+              <p class="zh" style="margin-bottom:6px">华初医疗科技，博鳌乐城先行区，琼海，海南<span style="color:var(--muted);font-size:.78rem">（总部）</span></p>
+              <p class="zh" style="margin-bottom:6px">华初医疗科技，海口中心，海南</p>
+              <p class="zh" style="margin-bottom:6px">华初医疗科技，万宁中心，海南</p>
+              <p style="font-size:.75rem;color:var(--muted);margin-top:6px"><span class="zh">请在百度地图或微信地图中搜索以上地址</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="info-row rv d4">
+          <div class="i-ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
+          <div class="i-tx"><strong>Email</strong><p><a href="mailto:public@huachucare.cn" style="color:var(--mid)">public@huachucare.cn</a></p></div>
+        </div>
+        <div class="info-row rv d5">
+          <div class="i-ic"><svg viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
+          <div class="i-tx"><strong>WeChat / WhatsApp</strong><p><span class="en">Please email us to receive our direct contact details.</span><span class="zh">请发送邮件至上述邮箱获取微信 / WhatsApp 联系方式。</span></p></div>
+        </div>
       </div>
     </div>
+
+    <!-- RIGHT COL: form -->
     <div class="rv d2">
-      <form class="cform" onsubmit="submitForm(event)">
-        <div class="crow2">
-          <div class="cg"><label class="cl"><span class="en">First Name</span><span class="zh">名字</span></label><input class="ci" name="first_name" placeholder="John / 张" required/></div>
-          <div class="cg"><label class="cl"><span class="en">Last Name</span><span class="zh">姓氏</span></label><input class="ci" name="last_name" placeholder="Smith / 三" required/></div>
-        </div>
-        <div class="cg"><label class="cl"><span class="en">Email Address</span><span class="zh">电子邮箱</span></label><input class="ci" type="email" name="email" placeholder="your@email.com" required/></div>
-        <div class="cg">
-          <label class="cl"><span class="en">Area of Interest</span><span class="zh">感兴趣的项目</span></label>
-          <select class="cs" name="interest">
-            <option value="" disabled selected>—</option>
-            <option>Youthful Vitality Management / 年轻态管理</option>
-            <option>mRNA-DC Tumour Vaccine / mRNA-DC 肿瘤疫苗</option>
-            <option>MSC – Heart Failure / 干细胞·心衰治疗</option>
-            <option>MSC – Knee Osteoarthritis / 干细胞·膝骨关节炎</option>
-            <option>MSC – Type 2 Diabetes / 干细胞·2 型糖尿病</option>
-            <option>CeEBV Cellular Vaccine / CeEBV 治疗型细胞疫苗</option>
-            <option>NK Cell Tumour Therapy / 自体 NK 细胞肿瘤治疗</option>
-            <option>Partnership / 合作洽谈</option>
-            <option>General Enquiry / 一般咨询</option>
-          </select>
-        </div>
-        <div class="cg"><label class="cl"><span class="en">Message</span><span class="zh">留言内容</span></label><textarea class="ct" name="message" placeholder="Tell us about your situation or questions… / 请告诉我们您的情况或问题…"></textarea></div>
-        <p class="c-note"><span class="en">We respond within 1–2 business days. Your information is kept strictly confidential.</span><span class="zh">我们将在 1-2 个工作日内回复。您的信息将被严格保密。</span></p>
-        <button type="submit" class="btn btn-pri" style="width:100%;justify-content:center">
-          <span class="en">Send Message</span><span class="zh">发送留言</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="c-ok" id="formOk"><span class="en">✓ Thank you — we will be in touch within 1–2 business days.</span><span class="zh">✓ 感谢留言，我们将在 1-2 个工作日内与您联系。</span></div>
-      </form>
+      <!-- MOBILE FORM CARD WRAPPER -->
+      <div class="cform-card">
+        <form class="cform" onsubmit="submitForm(event)">
+
+          <!-- Full Name (mobile) / First+Last (desktop) -->
+          <div class="cg mob-only" style="display:none">
+            <label class="cl"><span class="en">Full Name</span><span class="zh">姓名</span></label>
+            <input class="ci" name="full_name" placeholder="Full name / 您的姓名" style="width:100%;box-sizing:border-box"/>
+          </div>
+          <div class="crow2 desk-only">
+            <div class="cg"><label class="cl"><span class="en">First Name</span><span class="zh">名字</span></label><input class="ci" name="first_name" placeholder="John / 张" required/></div>
+            <div class="cg"><label class="cl"><span class="en">Last Name</span><span class="zh">姓氏</span></label><input class="ci" name="last_name" placeholder="Smith / 三" required/></div>
+          </div>
+
+          <!-- Phone (mobile only) -->
+          <div class="cg mob-only" style="display:none">
+            <label class="cl"><span class="en">Phone / WhatsApp</span><span class="zh">联系电话</span></label>
+            <input class="ci" name="phone" type="tel" placeholder="+86 / +xx" style="width:100%;box-sizing:border-box"/>
+          </div>
+
+          <!-- Email -->
+          <div class="cg">
+            <label class="cl"><span class="en">Email Address</span><span class="zh">电子邮箱</span></label>
+            <input class="ci" type="email" name="email" placeholder="your@email.com" required style="width:100%;box-sizing:border-box"/>
+          </div>
+
+          <!-- Area of Interest: desktop = select, mobile = checkbox expand -->
+          <div class="cg desk-only">
+            <label class="cl"><span class="en">Area of Interest</span><span class="zh">感兴趣的项目</span></label>
+            <select class="cs" name="interest" style="width:100%;box-sizing:border-box">
+              <option value="" disabled selected>—</option>
+              <option>Youthful Vitality Management / 年轻态管理</option>
+              <option>mRNA-DC Tumour Vaccine / mRNA-DC 肿瘤疫苗</option>
+              <option>MSC – Heart Failure / 干细胞·心衰治疗</option>
+              <option>MSC – Knee Osteoarthritis / 干细胞·膝骨关节炎</option>
+              <option>MSC – Type 2 Diabetes / 干细胞·2 型糖尿病</option>
+              <option>CeEBV Cellular Vaccine / CeEBV 治疗型细胞疫苗</option>
+              <option>NK Cell Tumour Therapy / 自体 NK 细胞肿瘤治疗</option>
+              <option>Partnership / 合作洽谈</option>
+              <option>General Enquiry / 一般咨询</option>
+            </select>
+          </div>
+          <div class="cg mob-only" style="display:none">
+            <label class="cl"><span class="en">Area of Interest</span><span class="zh">感兴趣的项目</span></label>
+            <button type="button" class="mob-interest-toggle" onclick="toggleInterest(this)">
+              <span class="mob-interest-label"><span class="en">Select (can choose multiple)</span><span class="zh">请选择（可多选）</span></span>
+              <span class="mob-interest-arrow">▼</span>
+            </button>
+            <div class="mob-interest-list">
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="Partnership / 合作洽谈"><span><span class="en">Partnership</span><span class="zh">商务合作</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="Youthful Vitality Management / 年轻态管理"><span><span class="en">Youthful Vitality Management</span><span class="zh">年轻态管理</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="mRNA-DC Tumour Vaccine"><span><span class="en">mRNA-DC Tumour Vaccine</span><span class="zh">mRNA-DC 肿瘤疫苗</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="MSC – Heart Failure"><span><span class="en">MSC – Heart Failure</span><span class="zh">干细胞·心衰治疗</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="MSC – Knee Osteoarthritis"><span><span class="en">MSC – Knee Osteoarthritis</span><span class="zh">干细胞·膝骨关节炎</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="MSC – Type 2 Diabetes"><span><span class="en">MSC – Type 2 Diabetes</span><span class="zh">干细胞·2 型糖尿病</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="CeEBV Cellular Vaccine"><span><span class="en">CeEBV Cellular Vaccine</span><span class="zh">CeEBV 治疗型细胞疫苗</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="NK Cell Tumour Therapy"><span><span class="en">NK Cell Tumour Therapy</span><span class="zh">自体 NK 细胞肿瘤治疗</span></span></label>
+              <label class="mob-interest-item"><input type="checkbox" name="interest_mob" value="General Enquiry / 一般咨询"><span><span class="en">General Enquiry</span><span class="zh">一般咨询</span></span></label>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="cg">
+            <label class="cl"><span class="en">Message</span><span class="zh">留言内容</span></label>
+            <textarea class="ct" name="message" placeholder="Tell us about your situation or questions… / 请告诉我们您的情况或问题…" style="width:100%;box-sizing:border-box"></textarea>
+          </div>
+
+          <p class="c-note"><span class="en">We respond within 1–2 business days. Your information is kept strictly confidential.</span><span class="zh">我们将在 1-2 个工作日内回复。您的信息将被严格保密。</span></p>
+          <button type="submit" class="btn btn-pri" style="width:100%;justify-content:center">
+            <span class="en">Send Message</span><span class="zh">发送留言</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="c-ok" id="formOk"><span class="en">✓ Thank you — we will be in touch within 1–2 business days.</span><span class="zh">✓ 感谢留言，我们将在 1-2 个工作日内与您联系。</span></div>
+        </form>
+      </div>
     </div>
   </div>
   <footer style="margin-top:60px"><div class="ft-grid"><div><div class="ft-name">HUACHU CARE</div><div class="ft-sub"><span class="en">Pioneering Healthcare Innovation · Guarding Life's Future</span><span class="zh">引领医疗创新 · 守护生命未来</span></div><p class="ft-about"><span class="en">Advanced cell therapy & regenerative medicine services in China's Boao Lecheng International Medical Tourism Pilot Zone.</span><span class="zh">中国博鳌乐城国际医疗旅游先行区细胞疗法与先进医学治疗服务机构。</span></p></div><div><div class="ft-ct"><span class="en">Navigate</span><span class="zh">导航</span></div><ul class="ft-links"><li><a onclick="go('home')"><span class="en">Home</span><span class="zh">首页</span></a></li><li><a onclick="go('about')"><span class="en">About</span><span class="zh">关于我们</span></a></li><li><a onclick="go('services')"><span class="en">Services</span><span class="zh">服务项目</span></a></li><li><a onclick="go('faq')"><span class="en">Cases & FAQ</span><span class="zh">案例与 FAQ</span></a></li></ul></div><div><div class="ft-ct"><span class="en">Contact</span><span class="zh">联系</span></div><ul class="ft-links"><li><a href="mailto:public@huachucare.cn">public@huachucare.cn</a></li><li><a onclick="go('contact')"><span class="en">Book consultation</span><span class="zh">预约咨询</span></a></li></ul></div></div><div class="ft-bot"><div class="ft-copy">© 2026 Huachu Medical Technology (华初医疗科技). <span class="en">All rights reserved.</span><span class="zh">版权所有。</span></div><div class="ft-legal"><span class="en">For informational purposes only. Not medical advice. All services subject to individual medical assessment and physician approval prior to treatment.</span><span class="zh">本网站内容仅供参考，不构成医疗建议。所有服务均须经个体化医学评估及医师审批后方可实施。</span></div></div></footer>
