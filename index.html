@@ -1746,6 +1746,10 @@ function svcTab(id,btn){
 }
 
 /* ── FAQ accordion ── */
+function toggleInterest(btn){
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
 function openMap(baidu,google){
   const isZh=document.documentElement.getAttribute('data-lang')==='zh';
   if(isZh){
