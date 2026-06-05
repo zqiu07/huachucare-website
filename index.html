@@ -1886,13 +1886,15 @@ async function submitForm(e){
   const btn=e.target.querySelector('[type=submit]');
   btn.disabled=true;btn.style.opacity='.6';
   try{
-    const res=await fetch('https://formsubmit.co/ajax/tawibi',{
+    const fd=new FormData(e.target);
+    fd.append('_captcha','false');
+    fd.append('_template','table');
+    const res=await fetch('https://formsubmit.co/tawibi',{
       method:'POST',
-      headers:{'Accept':'application/json','Content-Type':'application/json'},
-      body:JSON.stringify(Object.fromEntries(new FormData(e.target)))
+      headers:{'Accept':'application/json'},
+      body:fd
     });
-    const data=await res.json();
-    if(data.success==='true'||data.success===true){
+    if(res.ok){
       document.getElementById('formOk').classList.add('show');
       e.target.reset();
     }
