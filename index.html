@@ -1898,49 +1898,47 @@ function ovClick(e){if(e.target===document.getElementById('mOv'))closeM();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
 
 /* ── Form ── */
-function submitForm(e){
+/* ── Form ── */
+async function submitForm(e){
   e.preventDefault();
-  const form=e.target;
-  const btn=form.querySelector('[type=submit]');
+  const btn=e.target.querySelector('[type=submit]');
   btn.disabled=true;btn.style.opacity='.6';
 
   const isMobile=window.innerWidth<=860;
+  const fd=new FormData();
+  fd.append('access_key','f4fdcafa-386f-4a94-a723-7050a0e27b13');
 
-  // 把不需要的字段临时 disable（不会被提交）
-  form.querySelectorAll('input,select,textarea').forEach(el=>{
-    if(!el.name) return;
+  e.target.querySelectorAll('input,select,textarea').forEach(el=>{
+    if(!el.name||el.name==='access_key') return;
     const inMobOnly=el.closest('.mob-only');
     const inDeskOnly=el.closest('.desk-only');
-    if(isMobile && inDeskOnly){ el.disabled=true; }
-    if(!isMobile && inMobOnly){ el.disabled=true; }
+    if(isMobile && inDeskOnly) return;
+    if(!isMobile && inMobOnly) return;
+    if(el.type==='checkbox'){
+      if(el.checked) fd.append(el.name,el.value);
+      return;
+    }
+    fd.append(el.name,el.value);
   });
 
-  // 建隐藏 iframe 接收提交结果（不跳转页面）
-  const frameName='sf'+Date.now();
-  const iframe=document.createElement('iframe');
-  iframe.name=frameName;
-  iframe.style.display='none';
-  document.body.appendChild(iframe);
-  form.target=frameName;
-  form.action='https://formsubmit.co/public@huachucare.cn';
-  form.method='POST';
-
-  // 原生提交
-  form.submit();
-
-  // 恢复 disabled 字段
-  form.querySelectorAll('input,select,textarea').forEach(el=>{
-    el.disabled=false;
-  });
-
-  // 1.5秒后显示成功
-  setTimeout(()=>{
-    const ok=document.getElementById('formOk');
-    ok.classList.add('show');
-    ok.scrollIntoView({behavior:'smooth',block:'center'});
-    form.reset();
-    btn.disabled=false;btn.style.opacity='1';
-  },1500);
+  try{
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      body:fd
+    });
+    const data=await res.json();
+    if(data.success){
+      const ok=document.getElementById('formOk');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+      e.target.reset();
+    } else {
+      alert('发送失败，请直接发邮件至 public@huachucare.cn');
+    }
+  }catch(err){
+    alert('发送失败，请直接发邮件至 public@huachucare.cn');
+  }
+  btn.disabled=false;btn.style.opacity='1';
 }
 </script>
 </body>
