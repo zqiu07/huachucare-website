@@ -1920,7 +1920,6 @@ async function submitForm(e){
     fd.append('_template','table');
     const res=await fetch('https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18',{
       method:'POST',
-      headers:{'Accept':'application/json'},
       body:fd
     });
     if(res.ok){
