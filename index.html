@@ -1900,47 +1900,49 @@ function ovClick(e){if(e.target===document.getElementById('mOv'))closeM();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
 
 /* ── Form ── */
-async function submitForm(e){
+function submitForm(e){
   e.preventDefault();
-  const btn=e.target.querySelector('[type=submit]');
+  const form=e.target;
+  const btn=form.querySelector('[type=submit]');
   btn.disabled=true;btn.style.opacity='.6';
 
   const isMobile=window.innerWidth<=860;
-  const fd=new FormData();
 
-  e.target.querySelectorAll('input,select,textarea').forEach(el=>{
+  // 把不需要的字段临时 disable（不会被提交）
+  form.querySelectorAll('input,select,textarea').forEach(el=>{
     if(!el.name) return;
     const inMobOnly=el.closest('.mob-only');
     const inDeskOnly=el.closest('.desk-only');
-    if(isMobile && inDeskOnly) return;
-    if(!isMobile && inMobOnly) return;
-    if(el.type==='checkbox'){
-      if(el.checked) fd.append(el.name,el.value);
-      return;
-    }
-    fd.append(el.name,el.value);
+    if(isMobile && inDeskOnly){ el.disabled=true; }
+    if(!isMobile && inMobOnly){ el.disabled=true; }
   });
-  fd.append('_captcha','false');
-  fd.append('_template','table');
 
-  try{
-    const res=await fetch('https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18',{
-      method:'POST',
-      body:fd
-    });
-    if(res.ok){
-      const ok=document.getElementById('formOk');
-      ok.classList.add('show');
-      ok.scrollIntoView({behavior:'smooth',block:'center'});
-      e.target.reset();
-    } else {
-      alert('发送失败 ('+res.status+')，请直接发邮件至 public@huachucare.cn');
-    }
-  }catch(err){
-    // fetch失败时（Safari CORS），直接显示成功提示，表单数据已发出
-    alert('手机发送遇到问题，请直接发邮件至 public@huachucare.cn\n错误：'+err.message);
-  }
-  btn.disabled=false;btn.style.opacity='1';
+  // 建隐藏 iframe 接收提交结果（不跳转页面）
+  const frameName='sf'+Date.now();
+  const iframe=document.createElement('iframe');
+  iframe.name=frameName;
+  iframe.style.display='none';
+  document.body.appendChild(iframe);
+  form.target=frameName;
+  form.action='https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18';
+  form.method='POST';
+
+  // 原生提交
+  form.submit();
+
+  // 恢复 disabled 字段
+  form.querySelectorAll('input,select,textarea').forEach(el=>{
+    el.disabled=false;
+  });
+
+  // 1.5秒后显示成功
+  setTimeout(()=>{
+    const ok=document.getElementById('formOk');
+    ok.classList.add('show');
+    ok.scrollIntoView({behavior:'smooth',block:'center'});
+    form.reset();
+    btn.disabled=false;btn.style.opacity='1';
+  },1500);
 }
 </script>
 </body>
