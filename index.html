@@ -1899,17 +1899,42 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM();});
 /* ── Form ── */
 async function submitForm(e){
   e.preventDefault();
-  const isMobile=window.innerWidth<=860;
-  const fields=[];
-  e.target.querySelectorAll('input,select,textarea').forEach(el=>{
-    if(!el.name) return;
-    const inMobOnly=el.closest('.mob-only');
-    const inDeskOnly=el.closest('.desk-only');
-    if(isMobile && inDeskOnly) return;
-    if(!isMobile && inMobOnly) return;
-    fields.push(el.name+'='+el.value);
-  });
-  alert('isMobile:'+isMobile+'\n字段:\n'+fields.join('\n'));
+  const btn=e.target.querySelector('[type=submit]');
+  btn.disabled=true;btn.style.opacity='.6';
+  try{
+    const fd=new FormData();
+    const isMobile=window.innerWidth<=860;
+    e.target.querySelectorAll('input,select,textarea').forEach(el=>{
+      if(!el.name) return;
+      const inMobOnly=el.closest('.mob-only');
+      const inDeskOnly=el.closest('.desk-only');
+      if(isMobile && inDeskOnly) return;
+      if(!isMobile && inMobOnly) return;
+      if(el.type==='checkbox'){
+        if(el.checked) fd.append(el.name,el.value);
+        return;
+      }
+      fd.append(el.name,el.value);
+    });
+    fd.append('_captcha','false');
+    fd.append('_template','table');
+    const res=await fetch('https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18',{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:fd
+    });
+    if(res.ok){
+      const ok=document.getElementById('formOk');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+      e.target.reset();
+    } else {
+      alert('发送失败 ('+res.status+')，请直接发邮件至 public@huachucare.cn');
+    }
+  }catch(err){
+    alert('发送失败：'+err.message+'，请直接发邮件至 public@huachucare.cn');
+  }
+  btn.disabled=false;btn.style.opacity='1';
 }
 </script>
 </body>
