@@ -1903,22 +1903,8 @@ async function submitForm(e){
   btn.disabled=true;btn.style.opacity='.6';
 
   const isMobile=window.innerWidth<=860;
+  const fd=new FormData();
 
-  // 建一个隐藏 iframe 接收跳转
-  const frameName='submitFrame_'+Date.now();
-  const iframe=document.createElement('iframe');
-  iframe.name=frameName;
-  iframe.style.display='none';
-  document.body.appendChild(iframe);
-
-  // 建一个隐藏 form 直接提交
-  const hf=document.createElement('form');
-  hf.method='POST';
-  hf.action='https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18';
-  hf.target=frameName;
-  hf.style.display='none';
-
-  // 收集字段
   e.target.querySelectorAll('input,select,textarea').forEach(el=>{
     if(!el.name) return;
     const inMobOnly=el.closest('.mob-only');
@@ -1926,35 +1912,32 @@ async function submitForm(e){
     if(isMobile && inDeskOnly) return;
     if(!isMobile && inMobOnly) return;
     if(el.type==='checkbox'){
-      if(!el.checked) return;
+      if(el.checked) fd.append(el.name,el.value);
+      return;
     }
-    const input=document.createElement('input');
-    input.type='hidden';
-    input.name=el.name;
-    input.value=el.value;
-    hf.appendChild(input);
+    fd.append(el.name,el.value);
   });
+  fd.append('_captcha','false');
+  fd.append('_template','table');
 
-  // FormSubmit 配置
-  [['_captcha','false'],['_template','table']].forEach(([n,v])=>{
-    const i=document.createElement('input');
-    i.type='hidden';i.name=n;i.value=v;
-    hf.appendChild(i);
-  });
-
-  document.body.appendChild(hf);
-  hf.submit();
-
-  // 等一秒后显示成功（iframe提交无法读响应）
-  setTimeout(()=>{
-    const ok=document.getElementById('formOk');
-    ok.classList.add('show');
-    ok.scrollIntoView({behavior:'smooth',block:'center'});
-    e.target.reset();
-    btn.disabled=false;btn.style.opacity='1';
-    document.body.removeChild(hf);
-    document.body.removeChild(iframe);
-  },1000);
+  try{
+    const res=await fetch('https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18',{
+      method:'POST',
+      body:fd
+    });
+    if(res.ok){
+      const ok=document.getElementById('formOk');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+      e.target.reset();
+    } else {
+      alert('发送失败 ('+res.status+')，请直接发邮件至 public@huachucare.cn');
+    }
+  }catch(err){
+    // fetch失败时（Safari CORS），直接显示成功提示，表单数据已发出
+    alert('手机发送遇到问题，请直接发邮件至 public@huachucare.cn\n错误：'+err.message);
+  }
+  btn.disabled=false;btn.style.opacity='1';
 }
 </script>
 </body>
