@@ -1902,7 +1902,17 @@ async function submitForm(e){
   const btn=e.target.querySelector('[type=submit]');
   btn.disabled=true;btn.style.opacity='.6';
   try{
-    const fd=new FormData(e.target);
+    const fd=new FormData();
+    e.target.querySelectorAll('input,select,textarea').forEach(el=>{
+      if(!el.name) return;
+      const visible=el.offsetParent!==null;
+      if(!visible) return;
+      if(el.type==='checkbox'){
+        if(el.checked) fd.append(el.name,el.value);
+      } else {
+        fd.append(el.name,el.value);
+      }
+    });
     fd.append('_captcha','false');
     fd.append('_template','table');
     const res=await fetch('https://formsubmit.co/1abfa7cf18723c60bb7f14efacc59e18',{
