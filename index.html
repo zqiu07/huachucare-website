@@ -1903,10 +1903,14 @@ async function submitForm(e){
   btn.disabled=true;btn.style.opacity='.6';
   try{
     const fd=new FormData();
+    const isMobile=window.innerWidth<=860;
     e.target.querySelectorAll('input,select,textarea').forEach(el=>{
       if(!el.name) return;
-      const visible=el.offsetParent!==null;
-      if(!visible) return;
+      // 跳过被响应式隐藏的字段
+      const inMobOnly=el.closest('.mob-only');
+      const inDeskOnly=el.closest('.desk-only');
+      if(isMobile && inDeskOnly) return;
+      if(!isMobile && inMobOnly) return;
       if(el.type==='checkbox'){
         if(el.checked) fd.append(el.name,el.value);
       } else {
@@ -1921,8 +1925,9 @@ async function submitForm(e){
       body:fd
     });
     if(res.ok){
-      document.getElementById('formOk').classList.add('show');
-      document.getElementById('formOk').scrollIntoView({behavior:'smooth',block:'center'});
+      const ok=document.getElementById('formOk');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
       e.target.reset();
     }
   }catch(err){
