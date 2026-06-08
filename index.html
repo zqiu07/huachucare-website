@@ -1911,13 +1911,32 @@ async function submitForm(e){
       body:fd
     });
     if(res.ok){
-      document.getElementById('formOk').classList.add('show');
+      /* show inline success */
+      const ok=document.getElementById('formOk');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+      /* show floating toast */
+      showToast();
       e.target.reset();
     }
   }catch(err){
     alert('发送失败，请直接发邮件至 public@huachucare.cn');
   }
   btn.disabled=false;btn.style.opacity='1';
+}
+
+function showToast(){
+  const isZh=lang()==='zh';
+  let t=document.getElementById('globalToast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='globalToast';
+    t.className='toast';
+    document.body.appendChild(t);
+  }
+  t.textContent=isZh?'✓ 留言已发送！':'✓ Message sent!';
+  t.classList.add('show');
+  setTimeout(()=>{t.classList.remove('show')},3500);
 }
 </script>
 </body>
